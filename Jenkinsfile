@@ -12,10 +12,21 @@ pipeline {
           }
         }
         stage('Prepare for delivery') {
+          when {
+            branch 'development'
+          }
           steps {
             sh 'echo Beginning to deliver...'
             input message: 'Would you like to proceed with build?'
             sh 'echo Continuing with the build...'
+          }
+        }
+        stage('Prepare to deploy in production') {
+          when {
+            branch 'production'
+          }
+          steps {
+            sh 'echo Now deploying to production...'
           }
         }
         stage('Cleanup') {
