@@ -9,6 +9,7 @@ pipeline {
         stage('Test') {
           steps {
             sh 'echo This is the test'
+              echo "STAGE_NAME should be 'Test': ${STAGE_NAME}"
           }
         }
         stage('Prepare for delivery') {
